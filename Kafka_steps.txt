@@ -1,0 +1,24 @@
+--Replace the sample IP with the IP of your EC2 instance
+
+Start Zoo-keeper:
+-------------------------------
+bin/zookeeper-server-start.sh config/zookeeper.properties
+
+Start Kafka Server:
+-------------------------------
+export KAFKA_HEAP_OPTS="-Xmx256M -Xms128M"
+bin/kafka-server-start.sh config/server.properties
+
+Create the topic:
+-----------------------------
+bin/kafka-topics.sh --create --topic demo_test --bootstrap-server 54.179.175.167:9092
+
+Start Producer:
+--------------------------
+bin/kafka-console-producer.sh --topic demo_test --bootstrap-server 54.179.175.167:9092
+
+Start Consumer:
+-------------------------
+
+bin/kafka-console-consumer.sh --topic demo_test --bootstrap-server 54.179.175.167:9092
+
